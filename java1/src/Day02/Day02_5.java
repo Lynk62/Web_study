@@ -130,23 +130,38 @@ public class Day02_5 {//cs
 //				//4. 15 + 8 = 23
 		
 		
-		//문제15 : 나이를 입력받아 나이가 10세이상이면 학생 , 20세이상이면 성인 , 40세이상이면 중년 으로 출력하기
-		System.out.println("나이를 입력하세요 : ");		int age = scanner.nextInt();
-		String 나이 = age>=10 && age<20 ? "학생" : age>=20 && age<40 ? "성인" : age>=40 ? "중년" : "알수없음";
-		System.out.println("연령대 : " + 나이);
+//		//문제15 : 나이를 입력받아 나이가 10세이상이면 학생 , 20세이상이면 성인 , 40세이상이면 중년 으로 출력하기
+//		System.out.println("나이를 입력하세요 : ");		int age = scanner.nextInt();
+//		String 나이 = age>=10 && age<20 ? "학생" : age>=20 && age<40 ? "성인" : age>=40 ? "중년" : "알수없음";
+//		System.out.println("연령대 : " + 나이);
 			
 		
-		//문제16 : 3개의 정수를 입력받아 오름차순으로 정렬
-		System.out.println("첫번째 정수를 입력 : ");		int num1 = scanner.nextInt();
-		System.out.println("두번째 정수를 입력 : ");		int num2 = scanner.nextInt();
-		System.out.println("세번째 정수를 입력 : ");		int num3 = scanner.nextInt();
-		
+//		//문제16 : 3개의 정수를 입력받아 오름차순으로 정렬
+//		System.out.println("첫번째 정수를 입력 : ");		int num1 = scanner.nextInt();
+//		System.out.println("두번째 정수를 입력 : ");		int num2 = scanner.nextInt();
+//		System.out.println("세번째 정수를 입력 : ");		int num3 = scanner.nextInt();
+//		
+//		int x = num1<=num2 && num1<=num3 ? num1 : num2<= num1 && num2<=num3 ? num2 : num3;
+//		int z = num1>=num2 && num1>=num3 ? num1 : num2>=num2 && num2>=num3 ? num2 : num3;
+//		int y = num1>x && num1<z ? num1 : num2>x && num2<z ? num2 : num3;
+//		
+//		System.out.println("오름차순 정렬 : \n" + x +"\n"+y+"\n"+ z);
 		
 		//문제17 : 4개의 정수를 입력받아 내림차순으로 정렬 
-		System.out.println("첫번째 정수를 입력 : ");		int num5 = scanner.nextInt();
-		System.out.println("두번째 정수를 입력 : ");		int num6 = scanner.nextInt();
-		System.out.println("세번째 정수를 입력 : ");		int num7 = scanner.nextInt();
-		System.out.println("네번째 정수를 입력 : ");		int num8 = scanner.nextInt();	
+		System.out.println("첫번째 정수를 입력 : ");		int a = scanner.nextInt();
+		System.out.println("두번째 정수를 입력 : ");		int b = scanner.nextInt();
+		System.out.println("세번째 정수를 입력 : ");		int c = scanner.nextInt();
+		System.out.println("네번째 정수를 입력 : ");		int d = scanner.nextInt();
+		
+		int min = a<=b && a<=c && a<=d ? a : b<=a && b<=c && b<=d ? b : c<=a && c<=b && c<=d ? c : d;
+		int max = a>=b && a>=c && a>=d ? a : b>=a && b>=c && b>=d ? b : c>=a && c>=b && c>=d ? c : d;
+		
+		int middle = (a+b+c+d)/4;
+		
+		int mid1 = min<a && a<middle && a<max ? a : min<b && b<middle && b<max ? b : min<c && c<middle && c<max ? c : d;
+		int mid2 = min<a && middle<a && a<max ? a : min<b && middle<b && b<max ? b : min<c && middle<c && c<max ? c : d;
+		
+		System.out.println("내림차순 정렬 : \n" + max + "\n" + mid2 + "\n" + mid1 + "\n" + min);				
 		
 	}//me
 }//ce
