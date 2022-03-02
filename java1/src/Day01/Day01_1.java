@@ -6,7 +6,7 @@
 
 // tab키 = 들여쓰기 [5칸 이동]
 
-package Day01; // 패키지명 [소스파일들의 폴더]
+package Day01; // 패키지명 [소스파일들의 폴더...]
 
 public class Day01_1 { //class 시작
 	
