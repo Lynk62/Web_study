@@ -27,7 +27,12 @@ public class Day03_7 {//cs
 			else if(선택==2){//만약에 입력값이 2이면
 				System.out.println("출금액 : ");	int 출금 = scan.nextInt();
 				//입력받은 출금액을 통장에서 빼기
-				balance -= 출금;
+				//만약에 출금액이 예금액보다 더 크면 잔액부족
+				//아니면 잔액 출금 실행
+				if(출금>balance) {
+					System.out.println("잔액이 부족합니다.");
+				}
+				else { balance -= 출금; }
 			}
 			else if(선택==3){//만약에 입력값이 3이면
 				System.out.println("잔고: "+balance);
