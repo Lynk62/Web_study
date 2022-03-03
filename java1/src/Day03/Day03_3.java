@@ -44,7 +44,7 @@ public class Day03_3 {//cs
 				//문자열1.equals(문자열2) = 문자열1과 문자열2를 비교할 때
 		
 		boolean 로그인성공 = false;
-		//boolean : 1브트 true혹은 false저장
+		//boolean : 1비트 true혹은 false저장
 		
 		if(id.equals("admin")) { //입력한 id가 admin이면 /  id는 객체이기 때문에 == 불가능 // 객체 비교시에는 .equals() 사용
 			
@@ -96,8 +96,8 @@ public class Day03_3 {//cs
 		
 		else if (avg>=80) {
 			if(ko>=90) 		System.out.println("국어 장려");
-			if(en>=80) 		System.out.println("영어 장려");
-			if(ma>=80) 		System.out.println("수학 장려");
+			if(en>=90) 		System.out.println("영어 장려");
+			if(ma>=90) 		System.out.println("수학 장려");
 		}
 		
 		else { System.out.println("재시험");}
