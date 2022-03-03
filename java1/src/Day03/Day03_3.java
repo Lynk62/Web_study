@@ -89,27 +89,15 @@ public class Day03_3 {//cs
 		int avg = (ko+en+ma)/3;
 		
 		if(avg>=90) {
-			if(ko==100) {
-				System.out.println("국어 우수");
-			}
-			if(en==100) {
-				System.out.println("영어 우수");
-			}
-			if(ma==100) {
-				System.out.println("수학 우수");
-			}
+			if(ko==100) 	System.out.println("국어 우수");
+			if(en==100) 	System.out.println("영어 우수");
+			if(ma==100)		System.out.println("수학 우수");
 		}
 		
 		else if (avg>=80) {
-			if(ko>=90) {
-				System.out.println("국어 장려");
-			}
-			if(en>=80) {
-				System.out.println("영어 장려");
-			}
-			if(ma>=80) {
-				System.out.println("수학 장려");
-			}
+			if(ko>=90) 		System.out.println("국어 장려");
+			if(en>=80) 		System.out.println("영어 장려");
+			if(ma>=80) 		System.out.println("수학 장려");
 		}
 		
 		else { System.out.println("재시험");}
