@@ -49,11 +49,74 @@ public class Day05_4_도서대여 {//cs
 				System.out.println("ID : ");		String id = scan.next();
 				System.out.println("Password : ");	String pw = scan.next();
 				
-				boolean logincheck = true;
+				boolean logincheck = false;
 				
 				for(int i=0; i<memberlist.length; i++) {
+					
+					if(id.equals("admin")) {
+						System.out.println("관리자 로그인");
+						logincheck = true;
+						
+						while(true) {
+							System.out.println("[[ 관리자 메뉴 ]]");
+							System.out.println("1.도서 등록    2.도서 목록    3.로그아웃\n>>선택 : ");	int ch3 = scan.nextInt();
+							
+							if(ch3==1) {
+								System.out.println("도서명 : ");		String title = scan.next();
+								
+								for(int j=0; j<booklist.length; j++) {
+									if(booklist[j][0] == null) {
+										booklist[j][0] = title;
+									}//if end
+								}//for end
+							}//1.도서등록 if end
+							
+							else if(ch3==2) {
+								System.out.println("-----[[ 도서목록 ]]-----");
+								System.out.println("번호\t도서명");
+								
+								for(int j=0; j<booklist.length; j++) {
+									if(booklist[j][0]!=null) {
+										System.out.printf("%d\t%s\n", i, booklist[j][0]);
+									}//if end
+								}//for end
+							}//2.도서목록 if end
+							
+							else if(ch3==3) {}//3.로그아웃 if end
+							
+						}//관리자 while end
+					}//admin if end
+					
 					if(memberlist[i][0]!=null && memberlist[i][0].equals(id) && memberlist[i][1].equals(pw)) {
 						System.out.println("로그인 성공!");
+						logincheck = true;
+						
+			////////////////////////////////////////////////////////////////////////////////
+						
+						while(true) {
+							System.out.println("------[[ 도서 메뉴 ]]-------");
+							System.out.println("1.도서 검색    2.도서 목록    3.도서 대여    4.도서 반납\n>>선택 : ");	int ch2 = scan.nextInt();
+							
+							if(ch2==1) {	//도서 검색
+								System.out.println("도서명 : ");		String bookname = scan.next();
+								
+								for(int j=0; j<booklist.length; j++) {
+									
+								}//for end
+							}//ch2==1 if end
+							
+							else if(ch2==2) {
+								System.out.println("----[[ 도서 목록 ]]-----");
+								System.out.println("번호\t도서명\t대여여부\t대여자");
+								
+							}//ch2==2 if end
+							
+							else if(ch2==3) {}//ch2==3 if end
+							
+							else if(ch2==4) {}//ch2==4 if end
+							
+					
+						}//로그인 후 무한루프 while end	
 					}//if end
 				}//로그인체크 for end
 			}//ch==2 if end
