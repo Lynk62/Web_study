@@ -129,7 +129,7 @@ public class Day05_4_도서대여 {//cs
 										System.err.println("도서명\t도서대여여부\t대여자");
 										System.out.println("----------------------");
 										System.out.printf("%s\t%s\t%s\n\n", booklist[j][0],booklist[j][1],booklist[j][2]);
-										
+										break;
 									}//if end
 									
 									else {
@@ -185,7 +185,7 @@ public class Day05_4_도서대여 {//cs
 										}//대여가능여부 if end
 										
 										else {
-											System.err.println("알림 )) 반납할 수 없습니다");
+											System.err.println("알림 )) 반납할 수 없습니다 ");
 											break;
 											}//
 									}//대여 불가능 if end
