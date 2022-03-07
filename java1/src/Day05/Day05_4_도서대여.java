@@ -129,7 +129,7 @@ public class Day05_4_도서대여 {//cs
 										System.err.println("도서명\t도서대여여부\t대여자");
 										System.out.println("----------------------");
 										System.out.printf("%s\t%s\t%s\n\n", booklist[j][0],booklist[j][1],booklist[j][2]);
-										break;
+										
 									}//if end
 									
 									else {
@@ -145,37 +145,60 @@ public class Day05_4_도서대여 {//cs
 								System.out.println("번호\t도서명\t대여여부\t대여자");
 								
 								for(int j=0; j<booklist.length; j++) {
-									System.out.printf("%d\t%s\t%s\t%s\n\n", j,booklist[j][0],booklist[j][1],booklist[j][2]);
-									break;
+									if(booklist[j][0]!=null) {
+										System.out.printf("%d\t%s\t%s\t%s\n\n", j,booklist[j][0],booklist[j][1],booklist[j][2]);
+									}//if end
 								}//for end
 							}//ch2==2 if end
 							
 							else if(ch2==3) {
 								
-								System.out.println("대여할 도서명 : "); 	String bookname2 = scan.next();
+								System.out.println("대여할 도서명 : "); 	String bookname = scan.next();
 								
 								for(int j=0; j<booklist.length; j++) {
-									if(booklist[j][0].equals(bookname2)) {
+									if(booklist[j][0].equals(bookname)) {
 										if(booklist[j][1].equals(가능)) {
 											System.out.printf("%s를 대여하였습니다\n", booklist[j][0]);
 											booklist[j][1] = 불가능;
-											booklist[j][2] = memberlist[j][0];
+											booklist[j][2] = id;
 											break;
 										}//대여가능여부 if end
 										
-										else {}//
-									}//같은도서명 찾기 if end
+										else {
+											System.err.println("알림 )) 이미 대여중입니다");
+											break;
+											}//
+									}//대여 불가능if end
 								}//도서대여 for end
-								
 							}//ch2==3 if end
 							
-							else if(ch2==4) {}//ch2==4 if end
+							else if(ch2==4) {
+								System.out.println("반납할 도서명 : "); 	String bookname = scan.next();
+								
+								for(int j=0; j<booklist.length; j++) {
+									if(booklist[j][0].equals(bookname)) {
+										if(booklist[j][1].equals(불가능) && booklist[j][2].equals(불가능)) {
+											System.out.printf("%s를 반납하였습니다\n", booklist[j][0]);
+											booklist[j][1] = 가능;
+											booklist[j][2] = null;
+											break;
+										}//대여가능여부 if end
+										
+										else {
+											System.err.println("알림 )) 반납할 수 없습니다");
+											break;
+											}//
+									}//대여 불가능 if end
+								}//도서대여 for end
+							}//ch2==4 if end
 							
 							else if(ch2==5) {
 								break;
 							}//ch2==4 if end
 							
-							else {}//잘못된입력 else end
+							else {
+								System.err.println("잘못된 입력입니다");
+								break;}//잘못된입력 else end
 							
 					
 						}//로그인 후 무한루프 while end	
