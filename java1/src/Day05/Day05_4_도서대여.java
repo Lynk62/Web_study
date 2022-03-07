@@ -63,13 +63,22 @@ public class Day05_4_도서대여 {//cs
 							
 							if(ch3==1) {
 								System.out.println("도서명 : ");		String title = scan.next();
+								boolean bookcheck = true;
 								
 								for(int j=0; j<booklist.length; j++) {
 									if(booklist[j][0] == null) {
 										booklist[j][0] = title;
+										break;
+									}//if end
+									
+									if(booklist[j][0] != null && booklist[j][0].equals(title)) {
+											System.err.println("동일한 도서가 존재합니다 [재입력]");
+											bookcheck = false;
+											break;
 									}//if end
 								}//for end
-							}//1.도서등록 if end
+							}//1.관리자 도서등록 if end
+							
 							
 							else if(ch3==2) {
 								System.out.println("-----[[ 도서목록 ]]-----");
@@ -77,12 +86,14 @@ public class Day05_4_도서대여 {//cs
 								
 								for(int j=0; j<booklist.length; j++) {
 									if(booklist[j][0]!=null) {
-										System.out.printf("%d\t%s\n", i, booklist[j][0]);
+										System.out.printf("%d\t%s\n", j, booklist[j][0]);
 									}//if end
 								}//for end
 							}//2.도서목록 if end
 							
-							else if(ch3==3) {}//3.로그아웃 if end
+							else if(ch3==3) {
+								break;
+							}//3.로그아웃 if end
 							
 						}//관리자 while end
 					}//admin if end
@@ -100,13 +111,14 @@ public class Day05_4_도서대여 {//cs
 							if(ch2==1) {	//도서 검색
 								System.out.println("도서명 : ");		String bookname = scan.next();
 								
+								
 								for(int j=0; j<booklist.length; j++) {
 									
 								}//for end
 							}//ch2==1 if end
 							
 							else if(ch2==2) {
-								System.out.println("----[[ 도서 목록 ]]-----");
+								System.out.println("------[[ 도서 목록 ]]-------");
 								System.out.println("번호\t도서명\t대여여부\t대여자");
 								
 							}//ch2==2 if end
