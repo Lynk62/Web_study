@@ -47,6 +47,7 @@ public class Day08_5_모바일뱅크 {//cs
 					}
 					else {
 						System.out.println("안녕하세요."+result+"님"); 
+						bankmenu(result);
 					}
 				}
 				else if(ch==3) {member.아이디찾기();}

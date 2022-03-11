@@ -39,7 +39,7 @@ public class Bank2 {
 			//1.입력받기
 			System.out.println("은행명 : ");		String bname = 		Day08_5_모바일뱅크.scanner.next();
 			System.out.println("계좌번호 : ");		String number = 		Day08_5_모바일뱅크.scanner.next();
-			//아이디 중복체크
+			//계좌번호 중복체크
 			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
 				if(temp != null && temp.number.equals(number)) {
 					//만약에 공백이 아니면서 배열내 id와 입력받은 id와 동일하면
@@ -78,13 +78,28 @@ public class Bank2 {
 			
 		}//입금 void end
 		
-		void 출금() {}
+		void 출금() {
+			System.out.println("--------------{{ 출금 페이지 }}-----------------");
+		}
 		
-		void 이체() {}
+		void 이체() {
+			System.out.println("--------------{{ 이체 페이지 }}-----------------");
+		}
 		
-		void 대출() {}
+		void 대출() {
+			System.out.println("--------------{{ 대출 페이지 }}-----------------");
+		}
 		
-		void 계좌목록() {}
+		void 계좌목록() {
+			System.out.println("--------------{{ 계좌 목록 }}-----------------");
+			System.out.println("은행명\t계좌번호\t잔여금액");
+			
+			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
+				if(temp != null) {
+					System.out.println(temp.bname + "\t" + temp.number + "\t" + temp.money);
+				}//if end
+			}//for end
+		}//계좌목록 void end
 		
 		
 		
