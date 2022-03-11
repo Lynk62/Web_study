@@ -2,8 +2,6 @@ package Day08;
 
 import java.util.Scanner;
 
-import Day07.Member;
-
 public class Day08_5_모바일뱅크 {//cs
 	
 	// 모바일 뱅크 프로그램	[2인 과제]
@@ -69,7 +67,7 @@ public class Day08_5_모바일뱅크 {//cs
 			Bank2 bank = new Bank2();//1~4 {}에서 사용하기 위해 
 			
 			if(ch2==1) {
-				boolean result = bank.계좌생성();//1.회원가입 메소드 호출
+				boolean result = bank.계좌생성(loginid);//1.회원가입 메소드 호출
 				if(result == true) {
 					System.out.println("[ 알림 ] 계좌생성 성공");
 				}//true if end
@@ -80,13 +78,13 @@ public class Day08_5_모바일뱅크 {//cs
 	
 			
 			else if(ch2==2) {
-				bank.입금();//2.입금 메소드
+				bank.입금(loginid);//2.입금 메소드
 			}//2.입금 if end
 			
 	
 			
 			else if(ch2==3) {
-				bank.출금();//3.출금 메소드 호출
+				bank.출금(loginid);//3.출금 메소드 호출
 				
 			}//3.출금 if end
 			
@@ -101,7 +99,7 @@ public class Day08_5_모바일뱅크 {//cs
 			}//5.대출 if end
 			
 			else if(ch2==6) {
-				bank.계좌목록();
+				bank.계좌목록(loginid);
 				
 			}//6.계좌목록 if end
 			

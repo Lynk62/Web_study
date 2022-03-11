@@ -5,6 +5,7 @@ public class Bank2 {
 	private String bname;
 	private String number;
 	private String bpassword;
+	private String mid;
 	private int money;
 	
 	//2.생성자
@@ -33,7 +34,7 @@ public class Bank2 {
 	
 	
 	//3.메소드
-		boolean 계좌생성() {
+		boolean 계좌생성(String loginid) {
 			System.out.println("---------------- 계좌생성 페이지 -----------------");
 			
 			//1.입력받기
@@ -58,6 +59,7 @@ public class Bank2 {
 				if(temp == null) { // 빈공간이면
 					Day08_5_모바일뱅크.banks[i] = bank;
 					System.out.println("계좌생성 성공");
+					temp.mid = loginid;
 					return true; 
 				}//if end 
 				i++;	//i 증가
@@ -66,37 +68,77 @@ public class Bank2 {
 		}//계좌생성 boolean end
 		
 		
-		void 입금() {
+		
+		void 입금(String loginid) {
 			System.out.println("--------------{{ 입금 페이지 }}-----------------");
 			
 			//1.입력받기
 			System.out.println("계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
-			System.out.println("입금 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
+			
+			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
+				if(temp != null && temp.number.equals(number)) {
+					System.out.println("입금 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
+					temp.money += money;
+					System.out.println("잔여금액 : " + temp.money);
+					temp.mid = loginid;
+					return;
+				}//if end
+				
+				else {
+					System.out.println("알림)) 틀린 계좌입니다");
+					return;
+				}
+			}//for end
 			
 		
 			
 			
 		}//입금 void end
 		
-		void 출금() {
+		void 출금(String loginid) {
 			System.out.println("--------------{{ 출금 페이지 }}-----------------");
+			
+			//1.입력받기
+			System.out.println("계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
+			System.out.println("비밀번호 : ");		String bpassword = Day08_5_모바일뱅크.scanner.next();
+			
+			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
+				if(temp != null && temp.number.equals(number) && temp.bpassword.equals(bpassword)) {
+					System.out.println("출금 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
+					temp.money -= money;
+					System.out.println("잔여금액 : " + temp.money);
+					temp.mid = loginid;
+					return;
+				}//if end
+				
+				else {
+					System.out.println("알림)) 틀린 계좌입니다");
+					return;
+				}
+			}//for end
 		}
 		
 		void 이체() {
 			System.out.println("--------------{{ 이체 페이지 }}-----------------");
+			
+			//1.입력받기
+			System.out.println("이체할 계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
+			System.out.println("비밀번호 : ");				String bpassword = Day08_5_모바일뱅크.scanner.next();
+			
 		}
 		
 		void 대출() {
 			System.out.println("--------------{{ 대출 페이지 }}-----------------");
 		}
 		
-		void 계좌목록() {
+		void 계좌목록(String loginid) {
 			System.out.println("--------------{{ 계좌 목록 }}-----------------");
-			System.out.println("은행명\t계좌번호\t잔여금액");
+			System.out.println("은행명\t계좌번호\t잔여금액\t예금주");
 			
 			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
 				if(temp != null) {
-					System.out.println(temp.bname + "\t" + temp.number + "\t" + temp.money);
+					System.out.println(temp.bname + "\t" + temp.number + "\t" + temp.money+"\t" + temp.mid);
+					temp.mid = loginid;
 				}//if end
 			}//for end
 		}//계좌목록 void end
