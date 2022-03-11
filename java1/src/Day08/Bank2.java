@@ -73,8 +73,19 @@ public class Bank2 {
 			System.out.println("계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
 			System.out.println("입금 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
 			
+		
+			
 			
 		}//입금 void end
+		
+		void 출금() {}
+		
+		void 이체() {}
+		
+		void 대출() {}
+		
+		void 계좌목록() {}
+		
 		
 		
 		

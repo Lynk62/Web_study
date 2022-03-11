@@ -63,11 +63,11 @@ public class Day08_5_모바일뱅크 {//cs
 		while(true) {
 			System.out.println("--------------------- 은행 메뉴 ---------------------");
 			System.out.println("1.계좌생성    2.입금    3.출금    4.이체   5.대출   6.계좌목록 \n 선택 : ");
-			int ch1 = scanner.nextInt();
+			int ch2 = scanner.nextInt();
 			
 			Bank2 bank = new Bank2();//1~4 {}에서 사용하기 위해 
 			
-			if(ch1==1) {
+			if(ch2==1) {
 				boolean result = bank.계좌생성();//1.회원가입 메소드 호출
 				if(result == true) {
 					System.out.println("[ 알림 ] 계좌생성 성공");
@@ -76,32 +76,40 @@ public class Day08_5_모바일뱅크 {//cs
 				else System.out.println("[ 알림 ] 계좌생성 실패");//false else end
 			}//1.계좌생성 if end
 			
-	//----------------------------------------------------------------------------------		
+	
 			
-			else if(ch1==2) {
+			else if(ch2==2) {
 				bank.입금();//2.입금 메소드
 			}//2.입금 if end
 			
-	//----------------------------------------------------------------------------------		
+	
 			
-//			else if(ch1==3) {
-//				bank.출금();//3.출금 메소드 호출
-//				
-//			}//3.아이디찾기 if end
-//			
-//			else if(ch1==4) {
-//				bank.이체();//4.이체메소드 호출
-//				
-//			}//4.비밀번호찾기 if end
-//			
-//			else {
-//				System.out.println("알림)) 알 수 없는 번호입니다");
-//			}//else end
+			else if(ch2==3) {
+				bank.출금();//3.출금 메소드 호출
+				
+			}//3.출금 if end
+			
+			else if(ch2==4) {
+				bank.이체();//4.이체 메소드 호출
+				
+			}//4.이체 if end
+			
+			else if(ch2==5) {
+				bank.대출();
+				
+			}//5.대출 if end
+			
+			else if(ch2==6) {
+				bank.계좌목록();
+				
+			}//6.계좌목록 if end
+			
+			else {
+				System.out.println("알림)) 알 수 없는 번호입니다");
+			}//else end
 			
 		}//무한 반복 while end
-	//1.계좌생성
-	//2.입금
-	//출금 / 4.이체 / 5.대출 / 6.계좌목록
+	
 	}//은행메뉴 void end
 	
 }//ce
