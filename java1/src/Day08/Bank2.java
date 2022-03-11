@@ -1,5 +1,8 @@
 package Day08;
 
+import Day07.Book;
+import Day07.Day07_5_BookAplication;
+
 public class Bank2 {
 	//1.필드
 	private String bname;
@@ -22,11 +25,12 @@ public class Bank2 {
 		
 		
 		//3.풀생성자
-		public Bank2(String bname, String number, String bpassword, int money) {
+		public Bank2(String bname, String number, String bpassword, String mid, int money) {
 			super();
 			this.bname = bname;
 			this.number = number;
 			this.bpassword = bpassword;
+			this.mid = mid;
 			this.money = money;
 		}
 
@@ -34,38 +38,37 @@ public class Bank2 {
 	
 	
 	//3.메소드
-		boolean 계좌생성(String loginid) {
-			System.out.println("---------------- 계좌생성 페이지 -----------------");
+		void 계좌생성(String loginid) {
+			System.out.println("--------------{{ 계좌생성 페이지 }}-----------------");
 			
 			//1.입력받기
-			System.out.println("은행명 : ");		String bname = 		Day08_5_모바일뱅크.scanner.next();
-			System.out.println("계좌번호 : ");		String number = 		Day08_5_모바일뱅크.scanner.next();
-			//계좌번호 중복체크
+			System.out.println("은행명 : ");	String bname = 	 Day08_5_모바일뱅크.scanner.next();
+			System.out.println("계좌번호 : ");	String number = 	 Day08_5_모바일뱅크.scanner.next();
+			System.out.println("비밀번호 : ");	String bpassword = Day08_5_모바일뱅크.scanner.next();
+			
+			//ISBN 중복체크
 			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
 				if(temp != null && temp.number.equals(number)) {
-					//만약에 공백이 아니면서 배열내 id와 입력받은 id와 동일하면
-					System.out.println("알림)) 현재 사용중인 계좌번호입니다.");
-					return false; 
+					System.out.println("알림 )) 이미 생성된 계좌입니다 [등록실패]");
+					return;//도서등록 메소드 종료 (등록 실패)
 				}//if end
-			}//중복체크 for end
+			}//for end
 			
-			System.out.println("비밀번호 : ");		String bpassword =	Day08_5_모바일뱅크.scanner.next();
-		
-			Bank2 bank = new Bank2(bname, number, bpassword); // 객체 생성
+			//2. 객체화 [초기값 = 도서대여여부 = true / 대여회원id = null]
+			Bank2 bank = new Bank2(bname, number, bpassword, loginid, 0);
 			
-			//3. 배열 내 빈 공간을 찾아서 새로운 회원[객체] 넣기
+			//3. 배열대입[넣기]
 			int i = 0;
 			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
-				if(temp == null) { // 빈공간이면
+				if(temp == null) {
 					Day08_5_모바일뱅크.banks[i] = bank;
-					System.out.println("계좌생성 성공");
-					temp.mid = loginid;
-					return true; 
-				}//if end 
-				i++;	//i 증가
-			}//for end 
-			return false;
-		}//계좌생성 boolean end
+					System.out.println("알림)) 계좌생성이 완료되었습니다!");
+					return;
+				}//if end
+				i++;	//인덱스증가
+			}//for end
+		
+		}//계좌 생성void end
 		
 		
 		
@@ -75,6 +78,7 @@ public class Bank2 {
 			//1.입력받기
 			System.out.println("계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
 			
+			int i = 0;
 			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
 				if(temp != null && temp.number.equals(number)) {
 					System.out.println("입금 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
@@ -105,10 +109,17 @@ public class Bank2 {
 			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
 				if(temp != null && temp.number.equals(number) && temp.bpassword.equals(bpassword)) {
 					System.out.println("출금 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
-					temp.money -= money;
-					System.out.println("잔여금액 : " + temp.money);
-					temp.mid = loginid;
+					if(temp.money<money) {
+						System.out.println("알림 )) 잔액이 부족합니다");
+						return;
+					}//if end
+					
+					else {
+						temp.money -= money;
+						System.out.println("잔여금액 : " + temp.money);
+						temp.mid = loginid;
 					return;
+					}
 				}//if end
 				
 				else {
@@ -118,18 +129,36 @@ public class Bank2 {
 			}//for end
 		}
 		
-		void 이체() {
+		void 이체(String loginid) {
 			System.out.println("--------------{{ 이체 페이지 }}-----------------");
 			
 			//1.입력받기
-			System.out.println("이체할 계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
+			System.out.println("계좌번호 : ");		String number = Day08_5_모바일뱅크.scanner.next();
 			System.out.println("비밀번호 : ");				String bpassword = Day08_5_모바일뱅크.scanner.next();
+			System.out.println("이체할 계좌번호 : ");		String yournumber = Day08_5_모바일뱅크.scanner.next();
 			
-		}
+			
+			for(Bank2 temp : Day08_5_모바일뱅크.banks) {
+				if(temp != null && temp.number.equals(number) && !temp.number.equals(yournumber)) {
+					System.out.println("이체 금액 : ");	int money = Day08_5_모바일뱅크.scanner.nextInt();
+					
+					if(temp.money<money) {
+						System.out.println("알림)) 잔액이 부족합니다");
+					}//if end
+					
+					else {
+						System.out.println("이체가 완료되었습니다");
+						System.out.println("잔여금액 : " + temp.money);
+						temp.mid = loginid;
+						return;
+					}//else end
+				}//if end
+				
+				else {System.out.println("동일한 계좌번호가 없습니다");}
+			}//for end
+		}//이체 void end
 		
-		void 대출() {
-			System.out.println("--------------{{ 대출 페이지 }}-----------------");
-		}
+		
 		
 		void 계좌목록(String loginid) {
 			System.out.println("--------------{{ 계좌 목록 }}-----------------");
@@ -142,27 +171,16 @@ public class Bank2 {
 				}//if end
 			}//for end
 		}//계좌목록 void end
+
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		public String getName() {
+		public String getBname() {
 			return bname;
 		}
 
-		public void bname(String bname) {
+		public void setBname(String bname) {
 			this.bname = bname;
 		}
 
@@ -182,6 +200,14 @@ public class Bank2 {
 			this.bpassword = bpassword;
 		}
 
+		public String getMid() {
+			return mid;
+		}
+
+		public void setMid(String mid) {
+			this.mid = mid;
+		}
+
 		public int getMoney() {
 			return money;
 		}
@@ -189,7 +215,21 @@ public class Bank2 {
 		public void setMoney(int money) {
 			this.money = money;
 		}
-	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

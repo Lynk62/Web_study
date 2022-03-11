@@ -91,6 +91,8 @@ public class Member2 {
 		System.out.println("비밀번호 :"); 	String password = Day08_5_모바일뱅크.scanner.next();
 		
 		//2. 배열내 객체 id와 password가 입력한 값과 동일하면
+		
+		int i = 0;
 		for(Member2 temp : Day08_5_모바일뱅크.members) {
 			if(temp!=null &&temp.id.equals(id) && temp.password.equals(password) ) {
 					return temp.id;	
